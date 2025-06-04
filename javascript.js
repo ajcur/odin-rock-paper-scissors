@@ -104,6 +104,11 @@ function playGame() {
     logWinner(playRound(getComputerChoice(), getHumanChoice()), '3');
     logWinner(playRound(getComputerChoice(), getHumanChoice()), '4');
     logWinner(playRound(getComputerChoice(), getHumanChoice()), '5');
+    if (computerScore > humanScore) {
+        console.log('Computer wins the game!');
+    } else if (humanScore > computerScore) {
+        console.log('You win the game!');
+    } else console.log('The game is a tie!');
 }
 
 playGame();
