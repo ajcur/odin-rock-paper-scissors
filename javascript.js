@@ -12,11 +12,11 @@ function getComputerChoice() {
     let number2 = Math.random();
     let number3 = Math.random();
     if (number1 > number2 && number1 > number3) {
-        computerChoice = 'rock';
+        computerChoice = 'Rock';
     } else if (number2 > number1 && number2 > number3) {
-        computerChoice = 'paper';
+        computerChoice = 'Paper';
     } else if (number3 > number1 && number3 > number2) {
-        computerChoice = 'scissors';
+        computerChoice = 'Scissors';
     }
     return computerChoice;
 }
@@ -29,7 +29,7 @@ getHumanChoice returns humanChoice as a string */
 
 function getHumanChoice() {
     humanChoice = prompt("Enter your choice: ");
-    humanChoice = humanChoice.toLowerCase();
+    humanChoice = humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1).toLowerCase();
     return humanChoice;
 }
 
@@ -49,30 +49,30 @@ function playRound(computerChoice, humanChoice) {
     console.log(`Computer chose: ${computerChoice}!`)
     let roundWinner;
     switch(humanChoice) {
-        case 'rock':
-            if (computerChoice == 'rock') {
+        case 'Rock':
+            if (computerChoice == 'Rock') {
                 roundWinner = 'tie';
-            } else if (computerChoice == 'paper') {
+            } else if (computerChoice == 'Paper') {
                 roundWinner = 'computer';
-            } else if (computerChoice == 'scissors') {
+            } else if (computerChoice == 'Scissors') {
                 roundWinner = 'human';
             }
             break;
-        case 'paper':
-            if (computerChoice == 'rock') {
+        case 'Paper':
+            if (computerChoice == 'Rock') {
                 roundWinner = 'human';
-            } else if (computerChoice == 'paper') {
+            } else if (computerChoice == 'Paper') {
                 roundWinner = 'tie';
-            } else if (computerChoice == 'scissors') {
+            } else if (computerChoice == 'Scissors') {
                 roundWinner = 'computer';
             }
             break; 
-        case 'scissors':
-            if (computerChoice == 'rock') {
+        case 'Scissors':
+            if (computerChoice == 'Rock') {
                 roundWinner = 'computer';
-            } else if (computerChoice == 'paper') {
+            } else if (computerChoice == 'Paper') {
                 roundWinner = 'human';
-            } else if (computerChoice == 'scissors') {
+            } else if (computerChoice == 'Scissors') {
                 roundWinner = 'tie';
             }
             break;
@@ -84,13 +84,13 @@ function playRound(computerChoice, humanChoice) {
 
 function logWinner(roundWinner, roundNumber) {
     if (roundWinner == 'human') {
-            console.log(`You win Round Number ${roundNumber}! ${humanChoice} beats ${computerChoice}!`);
+            console.log(`You win Round ${roundNumber}! ${humanChoice} beats ${computerChoice}!`);
             ++ humanScore;
         } else if (roundWinner == 'computer') {
-            console.log(`You lose Round Number ${roundNumber}! ${computerChoice} beats ${humanChoice}!`);
+            console.log(`You lose Round ${roundNumber}! ${computerChoice} beats ${humanChoice}!`);
             ++ computerScore;
         } else if (roundWinner == 'tie') {
-            console.log(`Round Number ${roundNumber} is a tie! Try again!`);
+            console.log(`Round ${roundNumber} is a tie! Try again!`);
         }
         console.log(`Human Score: ${humanScore}`);
         console.log(`Computer Score: ${computerScore}`);
