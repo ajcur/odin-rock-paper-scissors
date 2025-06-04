@@ -43,7 +43,7 @@ playRound checks all the possible combinations for computerChoice and humanChoic
 If roundWinner is 'human', output "you win!" message and increment humanScore by 1
 If roundWinner is 'computer', output "you lose!" message and increment computerScore by 1 */
 
-function playRound(computerChoice, humanChoice) {
+function playRound(computerChoice, humanChoice, roundNumber) {
     console.log(`Computer chose: ${computerChoice}!`)
     let roundWinner;
     switch(humanChoice) {
@@ -76,13 +76,13 @@ function playRound(computerChoice, humanChoice) {
             break;
     }
     if (roundWinner == 'human') {
-        console.log(`You win! ${humanChoice} beats ${computerChoice}!`);
+        console.log(`You win Round Number ${roundNumber}! ${humanChoice} beats ${computerChoice}!`);
         ++ humanScore;
     } else if (roundWinner == 'computer') {
-        console.log(`You lose! ${computerChoice} beats ${humanChoice}!`);
+        console.log(`You lose Round Number ${roundNumber}! ${computerChoice} beats ${humanChoice}!`);
         ++ computerScore;
     } else if (roundWinner == 'tie') {
-        console.log('Tie! Try again!');
+        console.log(`Round Number ${roundNumber} is a tie! Try again!`);
     }
     console.log(`Human Score: ${humanScore}`);
     console.log(`Computer Score: ${computerScore}`);
