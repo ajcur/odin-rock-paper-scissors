@@ -4,8 +4,10 @@ getComputerChoice generates a random number between 0-1 using Math.random 3 time
 Compare these 3 numbers – if first one is highest, computerChoice is assigned rock, if second one is highest, computerChoice is assigned paper, and if third one is highest, computerChoice is assigned scissors
 getComputerChoice returns computerChoice as a string */
 
+let computerChoice;
+let humanChoice;
+
 function getComputerChoice() {
-    let computerChoice;
     let number1 = Math.random();
     let number2 = Math.random();
     let number3 = Math.random();
@@ -26,7 +28,7 @@ humanChoice is then made all-lowercase, to make sure it's case-insensitive
 getHumanChoice returns humanChoice as a string */
 
 function getHumanChoice() {
-    let humanChoice = prompt("Enter your choice: ");
+    humanChoice = prompt("Enter your choice: ");
     humanChoice = humanChoice.toLowerCase();
     return humanChoice;
 }
@@ -43,7 +45,7 @@ playRound checks all the possible combinations for computerChoice and humanChoic
 If roundWinner is 'human', output "you win!" message and increment humanScore by 1
 If roundWinner is 'computer', output "you lose!" message and increment computerScore by 1 */
 
-function playRound(computerChoice, humanChoice, roundNumber) {
+function playRound(computerChoice, humanChoice) {
     console.log(`Computer chose: ${computerChoice}!`)
     let roundWinner;
     switch(humanChoice) {
@@ -75,27 +77,33 @@ function playRound(computerChoice, humanChoice, roundNumber) {
             }
             break;
     }
-    if (roundWinner == 'human') {
-        console.log(`You win Round Number ${roundNumber}! ${humanChoice} beats ${computerChoice}!`);
-        ++ humanScore;
-    } else if (roundWinner == 'computer') {
-        console.log(`You lose Round Number ${roundNumber}! ${computerChoice} beats ${humanChoice}!`);
-        ++ computerScore;
-    } else if (roundWinner == 'tie') {
-        console.log(`Round Number ${roundNumber} is a tie! Try again!`);
-    }
-    console.log(`Human Score: ${humanScore}`);
-    console.log(`Computer Score: ${computerScore}`);
+    return roundWinner;
 }
+
+/* Create function logWinner that takes roundWinner from that round as input and displays the appropriate message to the player */
+
+function logWinner(roundWinner, roundNumber) {
+    if (roundWinner == 'human') {
+            console.log(`You win Round Number ${roundNumber}! ${humanChoice} beats ${computerChoice}!`);
+            ++ humanScore;
+        } else if (roundWinner == 'computer') {
+            console.log(`You lose Round Number ${roundNumber}! ${computerChoice} beats ${humanChoice}!`);
+            ++ computerScore;
+        } else if (roundWinner == 'tie') {
+            console.log(`Round Number ${roundNumber} is a tie! Try again!`);
+        }
+        console.log(`Human Score: ${humanScore}`);
+        console.log(`Computer Score: ${computerScore}`);
+    }
 
 /* Create function playGame that calls playRound five times */
 
 function playGame() {
-    playRound(getComputerChoice(), getHumanChoice());
-    playRound(getComputerChoice(), getHumanChoice());
-    playRound(getComputerChoice(), getHumanChoice());
-    playRound(getComputerChoice(), getHumanChoice());
-    playRound(getComputerChoice(), getHumanChoice());
+    logWinner(playRound(getComputerChoice(), getHumanChoice()), '1');
+    logWinner(playRound(getComputerChoice(), getHumanChoice()), '2');
+    logWinner(playRound(getComputerChoice(), getHumanChoice()), '3');
+    logWinner(playRound(getComputerChoice(), getHumanChoice()), '4');
+    logWinner(playRound(getComputerChoice(), getHumanChoice()), '5');
 }
 
 playGame();
