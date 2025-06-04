@@ -88,4 +88,14 @@ function playRound(computerChoice, humanChoice) {
     console.log(`Computer Score: ${computerScore}`);
 }
 
-playRound(getComputerChoice(), getHumanChoice());
+/* Create function playGame that calls playRound five times */
+
+function playGame() {
+    playRound(getComputerChoice(), getHumanChoice());
+    playRound(getComputerChoice(), getHumanChoice());
+    playRound(getComputerChoice(), getHumanChoice());
+    playRound(getComputerChoice(), getHumanChoice());
+    playRound(getComputerChoice(), getHumanChoice());
+}
+
+playGame();
