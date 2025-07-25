@@ -8,16 +8,9 @@ let computerChoice;
 let humanChoice;
 
 function getComputerChoice() {
-    let number1 = Math.random();
-    let number2 = Math.random();
-    let number3 = Math.random();
-    if (number1 > number2 && number1 > number3) {
-        computerChoice = 'Rock';
-    } else if (number2 > number1 && number2 > number3) {
-        computerChoice = 'Paper';
-    } else if (number3 > number1 && number3 > number2) {
-        computerChoice = 'Scissors';
-    }
+    let options = ['Rock', 'Paper', 'Scissors'];
+    let index = Math.floor(Math.random() * options.length);
+    computerChoice = options[index];
     return computerChoice;
 }
 
