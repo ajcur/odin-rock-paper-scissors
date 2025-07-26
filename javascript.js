@@ -105,7 +105,6 @@ function playRound(roundNumber) {
             break;
         case 'tie':
             console.log(`Round ${roundNumber} is a tie! Try again!`);
-            break;
     }
     return roundWinner;
 }
@@ -116,7 +115,7 @@ function playGame() {
     let roundNumber = 1;
     let humanScore = 0;
     let computerScore = 0;
-    while (computerScore < 5 && computerScore < 5) {
+    while (computerScore < 5 && humanScore < 5) {
         let roundWinner = playRound(roundNumber);
         switch (roundWinner) {
             case 'human':
@@ -127,13 +126,13 @@ function playGame() {
         };
         console.log(`Human Score: ${humanScore}`);
         console.log(`Computer Score: ${computerScore}`);
-        roundNumber++;
+        if (roundWinner) {
+            roundNumber++;
+        }
     }
     if (computerScore > humanScore) {
         console.log('Computer wins the game!');
-    } else if (humanScore > computerScore) {
-        console.log('You win the game!');
-    }
+    } else console.log('You win the game!');
 }
 
 playGame();
