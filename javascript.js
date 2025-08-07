@@ -77,32 +77,33 @@ function determineRoundWinner(computerChoice, humanChoice) {
 };
 
 function playRound(humanChoice) {
-/*     let humanChoice = getHumanChoice();
-    if (!humanChoice) {
-        console.log('You might have had a spelling error – try again!');
-        return;
-    } */
+    let logComputerChoice = document.querySelector("#log-computer-choice");
+    let logRoundWinner = document.querySelector("#log-round-winner");
+    let logHumanScore = document.querySelector("#log-human-score");
+    let logComputerScore = document.querySelector("#log-computer-score");
+
     let computerChoice = getComputerChoice();
-    console.log(`Computer chose: ${computerChoice}!`)
+
+    logComputerChoice.textContent = `Computer chose: ${computerChoice}!`
     let roundWinner = determineRoundWinner(computerChoice, humanChoice);
     switch (roundWinner) {
         case 'human':
-            console.log(`You win Round ${roundNumber}! ${humanChoice} beats ${computerChoice}!`);
+            logRoundWinner.textContent = `You win Round ${roundNumber}! ${humanChoice} beats ${computerChoice}!`;
             break;
         case 'computer':
-            console.log(`You lose Round ${roundNumber}! ${computerChoice} beats ${humanChoice}!`);
+            logRoundWinner.textContent =`You lose Round ${roundNumber}! ${computerChoice} beats ${humanChoice}!`;
             break;
         case 'tie':
-            console.log(`Round ${roundNumber} is a tie! Try again!`);
+            logRoundWinner.textContent =`Round ${roundNumber} is a tie! Try again!`;
     }
-    console.log(`Human Score: ${humanScore}`);
-    console.log(`Computer Score: ${computerScore}`);
+    logHumanScore.textContent = `Human Score: ${humanScore}`;
+    logComputerScore.textContent = `Computer Score: ${computerScore}`;
+    
     if (humanScore >= 5) {
-        console.log("Game Over! Human wins the game!");
+        alert("Game Over! Human wins the game!");
     } else if (computerScore >= 5) {
-        console.log("Game Over! Computer wins the game!");
+        alert("Game Over! Computer wins the game!");
     }
-    return roundWinner;
 };
 
 /* function playGame() {
